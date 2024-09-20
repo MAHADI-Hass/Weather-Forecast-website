@@ -1,13 +1,14 @@
-body{
+html{
 
     background-color: aquamarine;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #73C2FB;
-
+    
 }
+
+
 .weatherInput{
 
-    border-style: solid;
     border-radius: 35px;
     border-width: 3px;
     padding: 0px 0px 30px 0px;
@@ -23,4 +24,33 @@ body{
 }
 .daysForcast {
     float: center;
+}
+li {
+
+    float: left;
+    margin:0px 0px  0px 95px;
+    border-style: solid;
+    border-radius:35px;
+    border-width: 3px;
+    padding: 15px;
+    background-color: #3996d9;
+
+}
+li a {
+    display: block;
+}
+#mkn{
+
+    float: center;
+    margin: 95px 0px 0px 0px;
+}
+
+.currentWeather{
+
+    margin: 50px 700px 0px 700px;
+    padding: 25px 0px;
+    border-style: solid;
+    border-radius: 35px;
+    border-width: 3px;
+    background-color: #3996d9;
 }
