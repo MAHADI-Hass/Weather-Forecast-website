@@ -4,7 +4,7 @@ const locationButton =  document.querySelector(".locationButton");
 const currentWeatherDiv = document.querySelector(".currentWeather");
 const weatherCardsDiv = document.querySelector(".weatherCards");
 
-const apiKey ="";
+const apiKey = "bc8303db68a1931d62c84c1ad4536b54"
 
 const createWeatherCard = (cityName,weatherItem,index) =>{
 
@@ -35,7 +35,7 @@ const createWeatherCard = (cityName,weatherItem,index) =>{
     }
 }
 
-const getWeatherdetails = (cityName,latitute,longitude)=>{
+const getWeatherdetails = (cityName,latitude,longitude)=>{
 
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
@@ -69,17 +69,17 @@ const getWeatherdetails = (cityName,latitute,longitude)=>{
         
 }
 
-const getCityCoordinates = ()=> {
-
+const getCityCoordinates = () => {
     const cityName = cityInput.value.trim();
-
-    if(cityName ==="")return;
-
+    if(cityName === "") return;
     const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
 
     fetch(apiUrl).then(response => response.json()).then(data => {
-
-        if(!data.length)return alert(`No coordinates found for ${cityName}`);
+        if(!data.length) return alert(`No coordinates found for ${cityName}`);
+        const { lat, lon, name } = data[0];
+        getWeatherDetails(name, lat, lon);
+    }).catch(() => {
+        alert("An error occurred while fetching location data");
     });
 }
 
@@ -91,7 +91,7 @@ const getUserCoordinates = ()=> {
         const apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
         fetch(apiUrl).then(response => response.json()).then(data => {
             const { name } = data[0];
-            getWeatherDetails(name, latitude, longitude);
+            getWeatherdetails(name, latitude, longitude);
         }).catch(() => {
             alert("An error occurred while fetching city name");
         });
@@ -100,7 +100,7 @@ const getUserCoordinates = ()=> {
         if(error.code === error.PERMISSION_DENIED) {
             alert("Geolocation request denied. Allow geolocation permission.");
         } else {
-            alert("Gelocation request error. Reset location permission.");
+            alert("Geolocation request error. Reset location permission.");
         }
     });
 }

@@ -11,9 +11,10 @@ html{
 
     border-radius: 35px;
     border-width: 3px;
-    padding: 0px 0px 30px 0px;
+    padding: 10px 0px 40px 0px;
     margin: 0px 400px;
     background-color: #3996d9;
+    
 }
 
 .weathercards{
